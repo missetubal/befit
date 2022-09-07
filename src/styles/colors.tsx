@@ -16,4 +16,6 @@ export const Heading = styled.Text`
   line-height: ${props => props.fontSize * 1.5};
   font-weight: ${props => props.fontWeight || 400};
   color: ${props => props.color || 'black'};
+  margin-left: ${props => props.marginLeft}px;
+  margin-right: ${props => props.marginRight}px;
 `;
