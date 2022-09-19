@@ -5,4 +5,6 @@ export interface InputProps {
   rightIcon?: ReactNode;
   type?: string;
   onPress?: () => void;
+  margin?: string;
+  iconRighPressed?: ReactNode;
 }

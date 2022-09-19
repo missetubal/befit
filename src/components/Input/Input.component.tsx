@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import colors from '../../styles/colors';
 import {InputComponent, RightIcon, View} from './Input.styles';
 import {InputProps} from './Input.types';
 
 export const Input: React.FC<InputProps> = props => {
-  const {placehoder, leftIcon, rightIcon, type, onPress} = props;
+  const {
+    placehoder,
+    leftIcon,
+    rightIcon,
+    type,
+    onPress,
+    margin,
+    iconRighPressed,
+  } = props;
+  const [iconPressed, setIconPressed] = useState(false);
   const handleOnPress = () => {
+    setIconPressed(!iconPressed);
     if (onPress !== undefined && onPress !== null) {
       onPress();
     }
   };
+
   return (
-    <View>
+    <View margin={margin}>
       {leftIcon}
       <InputComponent
         placeholder={placehoder}
@@ -20,7 +31,9 @@ export const Input: React.FC<InputProps> = props => {
       />
 
       {rightIcon && (
-        <RightIcon onPress={() => handleOnPress()}>{rightIcon}</RightIcon>
+        <RightIcon onPress={() => handleOnPress()}>
+          {iconPressed ? iconRighPressed : rightIcon}
+        </RightIcon>
       )}
     </View>
   );
